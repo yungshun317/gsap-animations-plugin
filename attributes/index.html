@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GSAP Attributes</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+<body>
+<svg id="svgContainer">
+    <defs>
+        <filter id="tile">
+            <feTile id="feTile" in="SourceGraphic" x="0" y="0" width="10" height="10" />
+            <feTile />
+        </filter>
+    </defs>
+
+    <image xlink:href="static/sea.jpg" height="100%" style="filter:url(#tile)" />
+</svg>
+
+<script src="../gsap.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
