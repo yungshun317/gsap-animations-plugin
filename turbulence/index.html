@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GSAP Turbulence</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+<body>
+<svg id="svgContainer">
+    <defs>
+        <filter id="displacementFilter">
+            <feTurbulence id="feTurbulence" type="turbulence" baseFrequency="0.02" numOctaves="2" result="turbulence" />
+            <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="10" xChannelSelector="B" yChannelSelector="R" />
+        </filter>
+    </defs>
+
+    <image xlink:href="static/sea.jpg" height="100%" style="filter:url(#displacementFilter)" />
+</svg>
+
+<script src="../gsap.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
