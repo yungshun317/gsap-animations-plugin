@@ -15,7 +15,18 @@
 </div>
 <script src="../gsap.min.js"></script>
 <script>
-
+    gsap.defaults({
+        transformOrigin: "50% 50% 200%",
+        transformPerspective: 3000,
+        repeat: -1,
+        ease: "none"
+    });
+    gsap.set(".div", { rotationY: 90 });
+    gsap.set("#f1", { scale: 0.5 });
+    gsap.set("#f2", { scale: 6 });
+    gsap.to(".div", 100, { rotationY: 3600 });
+    gsap.to("#f1", 5, { scale: 3.5, yoyo: true });
+    gsap.to("#f2", 5, { scale: 1, yoyo: true });
 </script>
 </body>
 </html>
