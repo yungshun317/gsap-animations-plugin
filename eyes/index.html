@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GSAP Eyes</title>
+</head>
+<body>
+<p>
+    <button onclick="moveX()">xPercent: "+=100"</button>
+    <button onclick="moveY()">yPercent: "+=200"</button>
+</p>
+<svg width="900" height="600">
+    <rect class="r" x="100" y="200" width="100" height="50" />
+    <rect class="r" x="100" y="300" width="50" height="30" />
+    <rect class="r" x="100" y="400" width="25" height="10" />
+</svg>
+<script src="../gsap.min.js"></script>
+<script>
+    function moveX() { gsap.to(".r", 1, { xPercent: "+=100" }); }
+    function moveY() { gsap.to(".r", 1, { yPercent: "+=200" }); }
+</script>
+</body>
+</html>
