@@ -92,3 +92,27 @@ function assembleEyes() {
 }
 
 assembleEyes();
+
+window.addEventListener("mousemove", function(e) {
+    let L, cx, cy, dx, dy;
+
+    for (let i = 1; i < numberOfEyes; i++) {
+        cx = gsap.getProperty("#eyeball" + i, "cx");
+        cy = gsap.getProperty("#eyeball" + i, "cy");
+        rx = gsap.getProperty("#eyeball" + i, "rx");
+        L = Math.sqrt( Math.pow((e.pageX - cx), 2) + Math.pow((e.pageY - cy), 2) );
+        dx = (e.pageX - cx) / Math.sqrt(L) * rx / 8;
+        dy = (e.pageY - cy) / Math.sqrt(L) * rx / 6;
+
+        let newPupilSize = (rx / K) / (0.5 * L / screenDiagonal + 0.7);
+
+        gsap.set("#eyeball" + i, { x: dx, y: dy });
+        gsap.set("#pupil" + i, { x: dx * 1.2, y: dy * 1.3, r: newPupilSize });
+        gsap.set("#flare" + i, { x: dx * 1.2 * 0.95, y: dy * 1.3 * 0.95 });
+    }
+
+    if ((e.pageX < 100) || (e.pageX > (screenWidth - 100))) {
+        svgContainer.innerHTML = "";
+        assembleEyes();
+    }
+}, false);
