@@ -7,23 +7,35 @@
 </head>
 <body>
 <svg>
-    <image class="arrow" xlink:href="static/arrow.png" x="25%" y="47%" width="10%" />
-    <image class="arrow" xlink:href="static/arrow.png" x="37%" y="43%" width="20%" />
-    <image class="arrow" xlink:href="static/arrow.png" x="58%" y="45%" width="15%" />
+    <image id="map" xlink:href="static/map.jpg" x="0" y="0" width="4112" height="2136" />
+    <g id = "car">
+        <polygon class="cls-1" points="44 67 44 1 87 93 44 67" />
+        <polygon class="cls-2" points="44 67 44 1 1 93 44 67" />
+        <polygon class="cls-3" points="44 67 87 93 1 93 44 67" />
+    </g>
 </svg>
 
 <script src="../gsap.min.js"></script>
 <script>
-    let tl = gsap.timeline({ defaults: { ease: "power2.inOut" }});
+    const origX = window.innerWidth / 2 + 33;
+    const origY = window.innerHeight / 2 + 22;
+    const svgOrig = origX + " " + origY;
+    const shiftX = (1360 - window.innerWidth) / 2;
+    const shiftY = (683 - window.innerHeight) / 2;
 
-    tl.to(".arrow", 2, {
-        transformOrigin: "50% 50%",
-        rotation: "200_short"
-    });
-    tl.to(".arrow", 2, {
-        svgOrigin: window.innerWidth / 2 + " " + window.innerHeight / 2,
-        rotation: "360"
-    });
+    gsap.set("#car", { x: window.innerWidth / 2, y: window.innerHeight / 2, scale: 0.5 });
+    gsap.set("#map", { x: -1750 - shiftX, y: -1145 - shiftY });
+
+    let tl = gsap.timeline({ repeat: -1, defaults: { svgOrigin: svgOrig, ease: "power2.inOut" }});
+    tl.set("#map", { rotation: 16.5 });
+    tl.to("#map", { y: -490 - shiftY });
+    tl.to("#map", 1, { rotation: -75 });
+    tl.to("#map", 1, { y: -40 - shiftY });
+    tl.to("#map", 1, { rotation: -163 });
+    tl.to("#map", 1, { y: 600 - shiftY });
+    tl.to("#map", 1, { rotation: "107_short" });
+    tl.to("#map", 1, { y: 1056 - shiftY });
+    tl.to("#map", 1, { rotation: 16.5 });
 </script>
 </body>
 </html>
