@@ -39,3 +39,40 @@ function collectBees() {
 }
 
 collectBees();
+
+function beeMovement(n) {
+    let radius = random(1) < 0.35 ? random(20, 400) : random(20, 50);
+
+    gsap.set("#bee" + n, {
+        x: random(-_2Pi, _2Pi),
+        y: random(-_2Pi, _2Pi)
+    });
+
+    gsap.to("#bee" + n, {
+        duration: random(1.5, 3),
+        x: "+=" + _2Pi,
+        y: "+=" + _2Pi,
+        modifiers: {
+            x: x => Math.cos(parseFloat(x)) * radius + "px",
+            y: y => Math.cos(parseFloat(y)) * radius + "px"
+        },
+        repeat: -1,
+        ease: "none"
+    })
+
+    gsap.to("#bee" + n, {
+        duration: random(1.5, 3),
+        width :  random(0.1, 2) + "%",
+        yoyo: true,
+        repeat: -1,
+        ease: "none"
+    });
+}
+
+function animateBees() {
+    for (let j = 0; j < numberOfBees ; j++) {
+        beeMovement(j);
+    }
+};
+
+animateBees();
