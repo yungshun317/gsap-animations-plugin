@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GSAP Clock</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+<body>
+<svg width="900" height="600">
+    <circle id="cr1" cx="50" cy="300" r="24" fill="#4e006e" />
+</svg>
+
+<script src="../gsap.min.js"></script>
+<script>
+    // Snap all of the properties in the comma-delimited list to the closest whole number
+    // gsap.to("#cr1", 10, { x: 500, r: 200, snap: "x,r" });
+
+    // Snap to an increment
+    // gsap.to("#cr1", 5, { x: 800, snap: { x: 50 }});
+    // gsap.to("#cr1", 5, { x: 600, snap: { x: [200, 400, 500] }});
+    gsap.to("#cr1", 10, {
+        delay: 2,
+        x: 800,
+        snap: { x: { values: [200, 400, 800], radius: 30 }}
+    });
+</script>
+<script src="script.js"></script>
+</body>
+</html>
